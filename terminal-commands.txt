@@ -1,5 +1,4 @@
 ###########################
-# thu 06.12.2018
 # usb partition remove
 # e.g. usb drive letter is
 /dev/sdb
@@ -11,15 +10,31 @@ $d			          d to delete a partition
 $w			          w to write changes
 
 ###########################
-# fri 09.11.2018
 # youtube playlist download
 $youtube-dl -i -f mp4 --yes-playlist 'https://www.youtube.com/watch?list=<>'
 
 ###########################
-# general useful commands
+# general dev commands
 #
 # list of environments
 $conda env list
+
+# new env
+$conda create -n <new env name> python=3
+$source activate <new env name>
+
+# standards packages
+$conda install numpy pandas matplotlib
+$conda install jupyter notebook
+
+# tensorflow GPU or CPU
+# https://www.tensorflow.org/install/
+$conda install tensorflow-gpu
+$conda install tensorflow
+
+# keras
+# https://keras.io/#installation
+$conda install keras
 
 ###########################
 # shortcuts
