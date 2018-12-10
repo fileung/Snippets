@@ -1,0 +1,29 @@
+###########################
+# thu 06.12.2018
+# usb partition remove
+# e.g. usb drive letter is
+/dev/sdb
+
+# delete the partition using the following command
+$sudo fdisk -l		to get usb drive letter
+$fdisk /dev/sdb		open format disk program on usb stick
+$d			          d to delete a partition
+$w			          w to write changes
+
+###########################
+# fri 09.11.2018
+# youtube playlist download
+$youtube-dl -i -f mp4 --yes-playlist 'https://www.youtube.com/watch?list=<>'
+
+###########################
+# general useful commands
+#
+# list of environments
+$conda env list
+
+###########################
+# shortcuts
+# [ctrl] + [alt] + [T]        new terminal window
+# [shift] + [print]           print screen by drag box
+#
+# this list is far from complete!
