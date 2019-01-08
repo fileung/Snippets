@@ -63,7 +63,7 @@ $conda install jupyter notebook
 # if not yet login to access jupyter notebook, relogin
 [Ctrl]+[D]
 $ssh -L localhost:8888:localhost:8888 ryu@192.168.0.010 -p1337 (jupyter notebook)
-or if you are already using port 8888 locally, and wish to use 9999 on server notebook
+or if client already using port 8888 locally, and wish to use 9999 on server notebook
 $ssh -L localhost:9999:localhost:9999 lion@192.168.0.010 -p1337
 
 # make and browse to development folder
@@ -73,6 +73,8 @@ $cd development
 # running code on jupyter notebook server for remote access
 $source activate dev
 $jupyter notebook --no-browser
+or server notebook running on custom port 9999
+$jupyter notebook --port 9999 --no-browser 
 #copy the link from terminal
 
 #################################
@@ -80,6 +82,8 @@ $jupyter notebook --no-browser
 #################################
 open browser, browse to link
 http://localhost:8888/?token=<longstr>
+or if you used a custom port 9999
+http://localhost:9999/?token=<longstr>
 
 ###########
 # Reference
