@@ -1,0 +1,82 @@
+###########################################################################
+# openssh setup on server, running ubuntu like aws ssh for machine learning
+###########################################################################
+
+##################################
+# variables used in this example 
+# server user:      ryu
+# server ip:        192.168.0.010
+# server port:      1337
+# server conda env: dev
+##################################
+
+##################
+# server - openssh
+##################
+$sudo apt-get install openssh-server -y
+$sudo apt-get install nano -y (if nano not already installed)
+$sudo nano /etc/ssh/sshd_config
+in nano, add port number
+  # Port 22
+  Port 1337
+[Ctrl]+[X], y
+$sudo ufw allow 1337
+$sudo service ssh restart
+
+######
+router
+######
+may need to config port 1337
+  
+###########################
+client - remote into server
+###########################
+$ssh ryu@192.168.0.010 -p1337 (normal)
+or $ssh -L localhost:8888:localhost:8888 ryu@192.168.0.010 -p1337 (jupyter notebook)
+'yes' to add permanently connection
+#enter server user password
+
+####################################################
+# server - setup python development 
+# environment, anaconda, python and jupyter notebook
+####################################################
+# anaconda
+# ref - https://www.anaconda.com/download/
+$cd /home/ryu/Downloads/
+$wget https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
+$bash ./Anaconda3-2018.12-Linux-x86_64.sh
+yes - to set up env variable path
+no  - not install vscode
+
+# python env
+$conda env list
+$conda create -n dev python=3.6
+$source activate dev
+$conda install numpy scipy pandas matplotlib
+$conda install jupyter notebook
+
+# if not yet login to access jupyter notebook, relogin
+[Ctrl]+[D]
+$ssh -L localhost:8888:localhost:8888 ryu@192.168.0.010 -p1337 (jupyter notebook)
+
+# make and browse to development folder
+$mkdir development
+$cd development
+
+# running code on jupyter notebook server for remote access
+$source activate dev
+$jupyter notebook --no-browser
+#copy the link from terminal
+
+#################################
+# client - access server notebook
+#################################
+open browser, browse to link
+http://localhost:8888/?token=<longstr>
+
+###########
+# Reference
+###########
+How to Enable SSH on Ubuntu (18.04, 17.04, 16.04, 14.04 etc.)
+  https://thishosting.rocks/how-to-enable-ssh-on-ubuntu/
+
