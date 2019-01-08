@@ -40,6 +40,11 @@ or $ssh -L localhost:8888:localhost:8888 ryu@192.168.0.010 -p1337 (jupyter noteb
 # server - setup python development 
 # environment, anaconda, python and jupyter notebook
 ####################################################
+# conda
+$sudo apt install python-pip
+$pip install conda
+$export PATH=~/anaconda3/bin:$PATH
+
 # anaconda
 # ref - https://www.anaconda.com/download/
 $cd /home/ryu/Downloads/
